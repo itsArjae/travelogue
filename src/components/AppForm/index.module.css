@@ -1,0 +1,15 @@
+
+.error__message{
+    color: red;
+}
+
+.form{
+ display: flex;
+ flex-direction: column;
+}
+
+.field__style{
+    height: 30px;
+    font-size: 15px;
+    outline: none;
+}

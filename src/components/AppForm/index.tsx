@@ -1,27 +1,91 @@
-import { Box } from "@mui/material"
-import { Form, Formik } from "formik";
+import { Box, Button, Divider, TextField, Typography } from "@mui/material";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
+import styles from "./index.module.css";
 
-
-const AppForm = () => {
-
-    const initialValues = {
-        id: ""
-    }
-
-    const onSubmit = (values: any, actions: any) => {
-        console.log({ values, actions });
-        alert(JSON.stringify(values, null, 2));
-        actions.setSubmitting(false);
-      }
-    return(
-        <Box>
-            <Formik onSubmit={onSubmit} initialValues={initialValues} >
-                <Form>
-                    
-                </Form>
-            </Formik>
-        </Box>
-    )
+interface Props {
+  initialValues: any;
+  validationSchema: any;
+  handleSubmit: any;
+  FieldsArray: Fields[];
+  buttonLabel: string;
 }
+
+interface Fields {
+  divider: boolean;
+  title?: string;
+  Fields: fieldObject[];
+}
+
+interface fieldObject {
+  label: string;
+  type: string;
+  name: string;
+}
+
+const AppForm = (props: Props) => {
+  return (
+    <Box>
+      <Formik
+        onSubmit={props.handleSubmit}
+        initialValues={props.initialValues}
+        validationSchema={props.validationSchema}
+      >
+        <Form autoComplete="off" className={styles.form}>
+          {props.FieldsArray.map((fields, index) => (
+            <Box key={index}>
+              <Box>
+                <Typography>{fields.title}</Typography>
+              </Box>
+              {fields.divider ? (
+                <Divider sx={{ marginBottom: "10px" }} />
+              ) : (
+                <></>
+              )}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", md: "row" },
+                }}
+              >
+                {fields.Fields.map((fieldsData, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      margin: ".2rem",
+                      height: "50px",
+                      width: "100%",
+                    }}
+                  >
+                    <Field
+                      fullWidth
+                      id={fieldsData.name}
+                      name={fieldsData.name}
+                      label={fieldsData.label}
+                      type={fieldsData.type}
+                      placeholder={fieldsData.name}
+                      className={styles.field__style}
+                    />
+                    <ErrorMessage
+                      component="span"
+                      name={fieldsData.name}
+                      className={styles.error__message}
+                    />
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          ))}
+
+          <Button type="submit" variant="outlined">
+            Submit
+          </Button>
+        </Form>
+      </Formik>
+    </Box>
+  );
+};
 
 export default AppForm;

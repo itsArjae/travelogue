@@ -3,11 +3,12 @@ import { Card } from "@mui/material";
 interface Props {
   children: React.ReactNode;
   elevation?: number;
+  style?: object
 }
 const AppCard = (props: Props) => {
-  const { children, elevation } = props;
+  const { children, elevation, style } = props;
   return (
-    <Card sx={{ padding: "10px" }} elevation={elevation ? elevation : 3}>
+    <Card sx={{ padding: "10px", ...style }} elevation={elevation ? elevation : 3}>
       {children}
     </Card>
   );
