@@ -1,3 +1,4 @@
+import AppCard from "@/components/AppCard";
 import { Box } from "@mui/material";
 
 const LoginPage = () => {
@@ -10,7 +11,9 @@ const LoginPage = () => {
         alignItems: "center",
       }}
     >
-      <Box>Hi</Box>
+        <AppCard >
+            Hi
+        </AppCard>
     </Box>
   );
 };
