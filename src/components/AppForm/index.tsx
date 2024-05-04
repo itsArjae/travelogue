@@ -80,7 +80,7 @@ const AppForm = (props: Props) => {
           ))}
 
           <Button type="submit" variant="outlined">
-            Submit
+            {props.buttonLabel}
           </Button>
         </Form>
       </Formik>

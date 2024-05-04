@@ -8,7 +8,7 @@ interface Props {
 
 const AppLayout = (props: Props) => {
   const { children } = props;
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(true);
 
   return isAuthenticated ? (
     <AuthenticatedLayout>{children}</AuthenticatedLayout>

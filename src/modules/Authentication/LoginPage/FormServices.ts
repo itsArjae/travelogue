@@ -1,7 +1,8 @@
 import * as Yup from "yup";
 
 export const initialValues = {
-  id: "",
+    password:"",
+    username:""
 };
 
 export const FieldsArray = [
@@ -32,6 +33,10 @@ export const FieldsArray = [
 export const schema = Yup.object({
   username: Yup.string()
     .max(10, "Exceeded Character limit")
-    .min(4, "Invalid Id")
-    .required("Id is Required"),
+    .min(4, "Invalid Username")
+    .required("Username is Required"),
+  password: Yup.string()
+    .max(10, "Exceeded Character limit")
+    .min(4, "Invalid Password")
+    .required("Password is Required"),
 });
