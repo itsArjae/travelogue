@@ -65,7 +65,7 @@ const AppForm = (props: Props) => {
                       name={fieldsData.name}
                       label={fieldsData.label}
                       type={fieldsData.type}
-                      placeholder={fieldsData.name}
+                      placeholder={fieldsData.label}
                       className={styles.field__style}
                     />
                     <ErrorMessage

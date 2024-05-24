@@ -7,6 +7,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const AdminSidebar = () => {
   const router = useRouter();
 
+  const handleRouting = (url: string) => {
+    router.push(url);
+  }
+
   return (
     <Box sx={{ padding: "10px", width: { sm: "70px", md: "250px" } }}>
       <Box
@@ -60,6 +64,7 @@ const AdminSidebar = () => {
               textTransform: "none",
               backgroundColor: router.pathname == navData.url ? "#C8C6C6" : "",
             }}
+            onClick={()=>{handleRouting(navData.url)}}
           >
             {navData.icon}
             <Typography
